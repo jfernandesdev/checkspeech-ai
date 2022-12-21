@@ -9,19 +9,49 @@
   --background: #00040F;
   --text-button: #00040E;
   --gray-100: #D9D9D9;
+  --gray-200: #B3B4B7;
   --gray-500: #6D6D6D;
   --gray-700: #808080;
   --cyan: #00F6FF;
   --pink: #FF1CF7;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 0;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2D3146;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
-  color: var(--gray-100);
+  color: var(--gray-200);
+  -webkit-font-smoothing: antialiased;
 }
 
 body, input, textarea, select, button {
   font: 400 1rem "Poppins", sans-serif;
+}
+
+h1, h2, h3 {
+  color: var(--white);
 }
 
 a {

@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  align-items: center;
+  max-width: 1440px;
+  height: calc(100vh - 5rem);
+  padding: 0 2rem;
+  margin: auto;
+}
+
+.content {
+  .title {
+    font-size: 3.5rem;
+    line-height: 4.5rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    > span {
+      background: linear-gradient(95.53deg, var(--pink) 0%, var(--cyan) 99.39%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .ctaHome {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    width: 160px;
+    font-size: 1.125rem;
+    color: var(--white);
+    border-radius: 50px;
+    transition: background 0.2s;
+    border: 1px solid var(--white);
+
+    &:hover {
+      background: linear-gradient(45deg, var(--pink), var(--cyan));
+      border: 0;
+    }
+  }
+}
+
+.meshSound {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
