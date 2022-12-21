@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import { Navbar } from '../components/Navbar'
+
 export default function Home() {
   return (
     <>
@@ -8,6 +10,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <Navbar />
         <h1>Hello World!</h1>
       </main>
     </>
