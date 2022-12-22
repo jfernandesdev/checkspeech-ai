@@ -4,6 +4,7 @@ import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
 import { Solutions } from '../components/Solutions'
 import { Customers } from '../components/Customers'
+import { Banner } from '../components/Banner'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <Solutions />
         <Customers />
+        <Banner />
       </main>
     </>
   )

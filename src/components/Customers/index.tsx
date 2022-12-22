@@ -7,7 +7,7 @@ import styles from './styles.module.scss'
 export function Customers() {
   return(
     <section className={styles.container}>
-      <Title title='Nosso Clientes' />
+      <Title>Nosso Clientes</Title>
       <Text>Somos parceiros nos mais variados projetos e desafios de grandes marcas</Text>
 
       <ul className={styles.customerList}>
