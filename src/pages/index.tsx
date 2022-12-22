@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
 import { Solutions } from '../components/Solutions'
+import { Customers } from '../components/Customers'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <Solutions />
+        <Customers />
       </main>
     </>
   )

@@ -1,0 +1,20 @@
+.container {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.customerList {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 74px;
+
+  img {
+    cursor: pointer;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: invert(20%) sepia(13%) saturate(1155%) hue-rotate(180deg) brightness(93%) contrast(87%);
+    }
+  }
+}
