@@ -58,3 +58,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+button {
+  cursor: pointer;
+}
+
+main {
+  max-width: 1440px;
+  padding: 0 2rem;
+  margin: auto;
+}
