@@ -5,6 +5,7 @@ import { Hero } from '../components/Hero'
 import { Solutions } from '../components/Solutions'
 import { Customers } from '../components/Customers'
 import { Banner } from '../components/Banner'
+import { Prices } from '../components/Prices'
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Solutions />
         <Customers />
         <Banner />
+        <Prices />
       </main>
     </>
   )

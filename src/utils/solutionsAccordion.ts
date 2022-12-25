@@ -1,4 +1,4 @@
-import { FileAudio, ChatCircleDots, Translate, Smiley } from 'phosphor-react'
+import { FileAudio, ClosedCaptioning, Translate, Smiley } from 'phosphor-react'
 
 export const solutionsAccordion = [
   {
@@ -7,7 +7,7 @@ export const solutionsAccordion = [
     content: 'API de transcrição de voz assíncrona para áudio pré-gravado. Temos uma das melhores engines de reconhecimento de fala do mundo! O recurso speech-to-text assíncrono é um parceiro estratégico para o seu negócio. Esteja você extraindo insights de áudio ou transcrevendo conteúdo em escala.',
   },
   {
-    icon: ChatCircleDots,
+    icon: ClosedCaptioning,
     title: 'Transcrição de Áudio em tempo real',
     content: 'O recurso live-speech-to-text de transcrição ao vivo possibilita o uso de legendas em tempo real para o seu negócio. Nossas legendas garantem que as palestras e treinamentos ao vivo sejam acessíveis e possam ser arquivadas para uso futuro.',
   },
