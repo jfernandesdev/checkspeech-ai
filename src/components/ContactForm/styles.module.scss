@@ -203,7 +203,7 @@
       background: var(--red-100);
     }
 
-    &:focus-within {
+    &:not(.inputErrorAlert):focus-within {
       border: 1px solid var(--cyan) !important;
       background: rgba(255, 255, 255, 0.1);
     }
