@@ -14,6 +14,8 @@
   --gray-700: #808080;
   --cyan: #00F6FF;
   --pink: #FF1CF7;
+  --red-500: #DC2626;
+  --red-100: rgba(220, 38, 38, 0.1);
 }
 
 ::-webkit-scrollbar {
@@ -41,7 +43,8 @@ html, body {
 }
 
 body {
-  background: var(--background);
+  background: url('/background.png') no-repeat top left var(--background);
+  background-size: cover;
   color: var(--gray-200);
   -webkit-font-smoothing: antialiased;
 }

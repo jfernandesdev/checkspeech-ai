@@ -52,7 +52,7 @@ export function CardPrice({ plan, selectedPeriod = 'monthly' }: CardPriceProps) 
       </span>
     
       <button>
-        {plan.monthlyPrice ? 'Escolher Plano' : 'Entrar em contato'}
+        {plan.monthlyPrice ? 'Escolher Plano' : 'Consultar preço'}
       </button>
     </div>
   )
