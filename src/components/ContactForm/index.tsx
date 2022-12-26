@@ -4,17 +4,22 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import * as Checkbox from '@radix-ui/react-checkbox'
 import ReactFlagsSelect from 'react-flags-select'
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 
 import { Title } from "../Title";
 
 import { Check } from 'phosphor-react'
+
 import styles from './styles.module.scss'
+import 'react-phone-number-input/style.css'
 
 const newContactFormSchema = yup.object({
   name: yup.string().required(),
   email: yup.string().email().required(),
   country: yup.string().required(),
-  phone: yup.string().required(),
+  phone: yup.string().required().test('is-valid-phone-number', function(value) {
+    return value ? isValidPhoneNumber(value) : this.createError()
+  }),
   message: yup.string().required(),
   terms: yup.boolean().oneOf([true], 'You must accept the terms and conditions')
 })
@@ -27,7 +32,7 @@ export function ContactForm() {
   })
 
   const { register, handleSubmit, control, reset, formState: { errors, isSubmitting }} = methods;
-
+ 
   function handleNewContact(data: NewContactFormInputs) {
     console.log(data);
 
@@ -81,13 +86,21 @@ export function ContactForm() {
           />
         </label>
 
-        <label htmlFor="phone">
+        <label htmlFor="phone" className={styles.inputPhone}>
           <span>Telefone: </span>
-          <input
-            type="phone"
-            id="phone"
-            {...register('phone')}
-            className={errors.phone ? styles.inputErrorAlert : ''}
+          <Controller
+            control={control}
+            name='phone'
+            render={({ field: { onChange, value } }) => (
+               <PhoneInput
+                value={value}
+                onChange={onChange}
+                international
+                defaultCountry='BR'
+                countryCallingCodeEditable={false}
+                className={errors.phone && styles.inputErrorAlert}
+              /> 
+            )}
           />
         </label>
       </div>
