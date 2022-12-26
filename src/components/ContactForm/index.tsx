@@ -1,7 +1,9 @@
 import { Controller, useForm } from 'react-hook-form'
-import * as Checkbox from '@radix-ui/react-checkbox'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+
+import * as Checkbox from '@radix-ui/react-checkbox'
+import ReactFlagsSelect from 'react-flags-select'
 
 import { Title } from "../Title";
 
@@ -31,7 +33,7 @@ export function ContactForm() {
 
     // reset();
   }
-  
+
   return (
     <form onSubmit={handleSubmit(handleNewContact)} className={styles.form}>
       <Title>Fale conosco</Title>
@@ -61,11 +63,21 @@ export function ContactForm() {
       <div>
         <label htmlFor="country">
           <span>País: </span>
-          <input
-            type="text"
-            id="country"
-            {...register('country')}
-            className={errors.country ? styles.inputErrorAlert : ''}
+          <Controller
+            control={control}
+            name='country'
+            defaultValue='BR'
+            render={({ field: { onChange, value } }) => (
+              <ReactFlagsSelect
+                selected={value}
+                onSelect={onChange}
+                customLabels={{ BR: "Brasil" }}
+                className={`${styles.selectCountry} ${errors.country && styles.inputErrorAlert}`}
+                searchable
+                placeholder="Selecione seu país"
+                searchPlaceholder="Buscar país..."
+              />
+            )}
           />
         </label>
 

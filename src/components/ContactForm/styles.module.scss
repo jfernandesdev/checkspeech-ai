@@ -10,7 +10,7 @@
   border-radius: 24px;
   position: relative;
 
-  div {
+  > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
@@ -56,6 +56,81 @@
       resize: none;
     }
 
+    .selectCountry {
+      button {
+        height: 56px;
+        padding: 1rem;
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--gray-700);
+        border-radius: 8px;
+
+        &:focus {
+          outline: 0;
+          border-color: var(--cyan);
+        }
+
+        > span {
+          font-weight: 400;
+          color: var(--gray-200);
+          padding: 0;
+        }
+        
+        &:after {
+          border-top-color: var(--gray-200);
+          border-bottom-color: var(--gray-200);
+        }
+      }
+
+      ul {
+        background: #373B49;
+        padding: 0 1rem 0.5rem;
+        list-style-type: none;
+        border-radius: 8px;
+        transition: all 0.2s;
+       
+        > div  {
+          background: #373B49;
+          height: 100%;
+          
+          input {
+            height: 40px;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            border-bottom: 1px solid var(--gray-200);
+          }
+        }
+
+        li {
+          span {
+            font-weight: 400;
+          }
+
+          &:hover, &:focus {
+            background: var(--cyan);
+
+            span {
+              color: var(--text-button);
+            }
+          }
+        }
+      }
+
+      &.inputErrorAlert {
+        background: transparent;
+        border: 0;
+
+        button {
+          border: 1px solid var(--red-500);
+          background: var(--red-100);
+        }
+      }
+    }
+
     .inputErrorAlert {
       border: 1px solid var(--red-500);
       background: var(--red-100);
@@ -97,7 +172,6 @@
   font-weight: 400;
   color: var(--gray-200);
   cursor: pointer;
-
   > a {
     color: var(--white);
     font-weight: 600;
@@ -128,5 +202,10 @@
 
   svg {
     margin-top: 5px;
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: var(--cyan);
   }
 }
