@@ -18,7 +18,7 @@ export function Prices() {
   }
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} id="prices">
         <Title>Planos & Preços</Title>
         <div className={styles.header}>
           <Text>

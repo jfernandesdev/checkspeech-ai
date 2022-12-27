@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: calc(100vh - 5rem);
-   
+  height: 100vh;
+  padding-top: 5rem;
+ 
   p {
     font-size: 1.25rem;
     line-height: 2.5rem;

@@ -51,9 +51,9 @@ export function CardPrice({ plan, selectedPeriod = 'monthly' }: CardPriceProps) 
         }
       </span>
     
-      <button>
+      <a href="#contact">
         {plan.monthlyPrice ? 'Escolher Plano' : 'Consultar preço'}
-      </button>
+      </a>
     </div>
   )
 }

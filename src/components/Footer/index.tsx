@@ -60,16 +60,16 @@ export function Footer() {
           <ul>
             <strong>Links úteis</strong>
             <li>
-              <a href="#">Soluções</a>
+              <a href="#solutions">Soluções</a>
             </li>
             <li>
-              <a href="#">Clientes</a>
+              <a href="#customers">Clientes</a>
             </li>
             <li>
-              <a href="#">Preços</a>
+              <a href="#prices">Preços</a>
             </li>
             <li>
-              <a href="#">Contato</a>
+              <a href="#contact">Contato</a>
             </li>
             <li>
               <a href="#">Termos & Privacidade</a>

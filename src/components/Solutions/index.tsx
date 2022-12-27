@@ -7,7 +7,7 @@ import styles from './styles.module.scss'
 
 export function Solutions() {
   return(
-    <section className={styles.container}>
+    <section className={styles.container} id="solutions">
       <div>
         <Title>Nossas Soluções</Title>
         <Text>

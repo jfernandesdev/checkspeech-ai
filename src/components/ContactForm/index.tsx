@@ -40,104 +40,106 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(handleNewContact)} className={styles.form}>
-      <Title>Fale conosco</Title>
+    <section className={styles.container} id="contact">
+      <form onSubmit={handleSubmit(handleNewContact)} className={styles.form}>
+        <Title>Fale conosco</Title>
 
-      <div>
-        <label htmlFor="name">
-          <span>Nome:</span>
-          <input
-            type="text"
-            id="name"
-            {...register('name')}
-            className={errors.name ? styles.inputErrorAlert : ''}
+        <div>
+          <label htmlFor="name">
+            <span>Nome:</span>
+            <input
+              type="text"
+              id="name"
+              {...register('name')}
+              className={errors.name ? styles.inputErrorAlert : ''}
+            />
+          </label>
+
+          <label htmlFor="email">
+            <span>E-mail: </span>
+            <input
+              type="email"
+              id="email"
+              {...register('email')}
+              className={errors.email ? styles.inputErrorAlert : ''}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label htmlFor="country">
+            <span>País: </span>
+            <Controller
+              control={control}
+              name='country'
+              defaultValue='BR'
+              render={({ field: { onChange, value } }) => (
+                <ReactFlagsSelect
+                  selected={value}
+                  onSelect={onChange}
+                  customLabels={{ BR: "Brasil" }}
+                  className={`${styles.selectCountry} ${errors.country && styles.inputErrorAlert}`}
+                  searchable
+                  placeholder="Selecione seu país"
+                  searchPlaceholder="Buscar país..."
+                />
+              )}
+            />
+          </label>
+
+          <label htmlFor="phone" className={styles.inputPhone}>
+            <span>Telefone: </span>
+            <Controller
+              control={control}
+              name='phone'
+              render={({ field: { onChange, value } }) => (
+                <PhoneInput
+                  value={value}
+                  onChange={onChange}
+                  international
+                  defaultCountry='BR'
+                  countryCallingCodeEditable={false}
+                  className={errors.phone && styles.inputErrorAlert}
+                />
+              )}
+            />
+          </label>
+        </div>
+
+        <label htmlFor="message">
+          <span>Mensagem:</span>
+          <textarea
+            id="message"
+            {...register('message')}
+            className={errors.message ? styles.inputErrorAlert : ''}
+            placeholder="Digite sua mensagem..."
           />
         </label>
 
-        <label htmlFor="email">
-          <span>E-mail: </span>
-          <input
-            type="email"
-            id="email"
-            {...register('email')}
-            className={errors.email ? styles.inputErrorAlert : ''}
-          />
-        </label>
-      </div>
-
-      <div>
-        <label htmlFor="country">
-          <span>País: </span>
+        <label className={`${styles.labelCheckbox} ${errors.terms && styles.inputErrorAlert}`}>
           <Controller
             control={control}
-            name='country'
-            defaultValue='BR'
+            name='terms'
+            defaultValue={false}
             render={({ field: { onChange, value } }) => (
-              <ReactFlagsSelect
-                selected={value}
-                onSelect={onChange}
-                customLabels={{ BR: "Brasil" }}
-                className={`${styles.selectCountry} ${errors.country && styles.inputErrorAlert}`}
-                searchable
-                placeholder="Selecione seu país"
-                searchPlaceholder="Buscar país..."
-              />
+              <Checkbox.Root
+                checked={value}
+                onCheckedChange={onChange}
+                className={`${styles.checkbox} ${errors.terms && styles.inputErrorAlert}`}
+              >
+                <Checkbox.Indicator>
+                  <Check size={30} color='var(--cyan)' />
+                </Checkbox.Indicator>
+              </Checkbox.Root>
             )}
           />
+          Eu concordo com a <a>Política de Privacidade</a>
         </label>
 
-        <label htmlFor="phone" className={styles.inputPhone}>
-          <span>Telefone: </span>
-          <Controller
-            control={control}
-            name='phone'
-            render={({ field: { onChange, value } }) => (
-               <PhoneInput
-                value={value}
-                onChange={onChange}
-                international
-                defaultCountry='BR'
-                countryCallingCodeEditable={false}
-                className={errors.phone && styles.inputErrorAlert}
-              /> 
-            )}
-          />
-        </label>
-      </div>
-
-      <label htmlFor="message">
-        <span>Mensagem:</span>
-        <textarea
-          id="message"
-          {...register('message')}
-          className={errors.message ? styles.inputErrorAlert : ''}
-          placeholder="Digite sua mensagem..."
-        />
-      </label>
-
-      <label className={`${styles.labelCheckbox} ${errors.terms && styles.inputErrorAlert}`}>
-        <Controller 
-          control={control}
-          name='terms'
-          defaultValue={false}
-          render={({ field: { onChange, value } }) => (
-            <Checkbox.Root
-              checked={value}
-              onCheckedChange={onChange}
-              className={`${styles.checkbox} ${errors.terms && styles.inputErrorAlert}`}
-            >
-              <Checkbox.Indicator>
-                <Check size={30} color='var(--cyan)' />
-              </Checkbox.Indicator>
-            </Checkbox.Root>
-          )}
-        />
-        Eu concordo com a <a>Política de Privacidade</a>
-      </label>
-
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
-      </button>
-    </form>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
+        </button>
+      </form>
+    </section>
   )
 }

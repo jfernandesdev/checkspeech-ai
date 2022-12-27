@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 
 export function Hero() {
   return(
-    <section className={styles.container}>
+    <section className={styles.container} id="home">
       <h1 className={styles.title}>
         Transforme suas falas <br />em textos usando <br /><span> Inteligência Artificial</span>
       </h1>
