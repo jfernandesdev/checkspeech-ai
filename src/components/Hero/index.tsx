@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import { parseCookies } from 'nookies'
 import Image from 'next/image'
 
 import { CookieBar } from '../CookieBar'
@@ -5,6 +7,22 @@ import { CookieBar } from '../CookieBar'
 import styles from './styles.module.scss'
 
 export function Hero() {
+  const [showAlert, setShowAlert] = useState(false)
+
+  useEffect(() => {
+    const cookies = parseCookies()
+
+    if (cookies.checkspeechAcceptCookies) {
+      return setShowAlert(false)
+    }
+
+    setShowAlert(true)
+  }, [])
+
+  function onClose() {
+    setShowAlert(false)
+  }
+
   return(
     <section className={styles.container} id="home">
       <h1 className={styles.title}>
@@ -27,7 +45,7 @@ export function Hero() {
         height={360}
       />
 
-      <CookieBar />
+      {showAlert && <CookieBar onClose={onClose} />}
     </section>
   ) 
 }
