@@ -1,4 +1,7 @@
 import Image from 'next/image'
+
+import { CookieBar } from '../CookieBar'
+
 import styles from './styles.module.scss'
 
 export function Hero() {
@@ -23,6 +26,8 @@ export function Hero() {
         width={1125}
         height={360}
       />
+
+      <CookieBar />
     </section>
   ) 
 }
