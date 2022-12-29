@@ -1,9 +1,12 @@
 import Image from 'next/image'
+import { useTranslation } from 'next-i18next'
 import { FacebookLogo, InstagramLogo, LinkedinLogo, TwitterLogo } from 'phosphor-react'
 
 import styles from './styles.module.scss'
 
 export function Footer() {
+  const { t } = useTranslation()
+  
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
@@ -15,41 +18,38 @@ export function Footer() {
           height={39} 
         />
 
-          <span>Temos uma das melhores engines de <br/> reconhecimento de fala do mundo!</span>
+          <span>{t("footer:text")}</span>
 
           <div className={styles.socialMedia}>
             <a 
               href="https://www.instagram.com/" 
               target="_blank" 
               rel="noreferrer"
-              title="Explore nosso Instagram!" 
+              title={t("footer:instagramButtonTitle").toString()}
             >
               <InstagramLogo size={30} />
             </a>
-
             <a 
               href="https://www.facebook.com/" 
               target="_blank"
               rel="noreferrer"
-              title="Curta nosso Facebook!" 
+              title={t("footer:facebookButtonTitle").toString()}
              >
               <FacebookLogo size={30} />
             </a>
-
             <a 
               href="https://www.linkedin.com/" 
               target="_blank" 
               rel="noreferrer"
-              title="Conexe com nosso Linkedin!" 
+              title={t("footer:linkedinButtonTitle").toString()}
             >
               <LinkedinLogo size={30} />
             </a>
-
             <a 
               href="https://twitter.com/" 
               target="_blank" 
               rel="noreferrer"
-              title="Siga nosso Twitter!" 
+              title={t("footer:twitterButtonTitle").toString()}
             >
               <TwitterLogo size={30} />
             </a>
@@ -58,28 +58,40 @@ export function Footer() {
 
         <div>
           <ul>
-            <strong>Links úteis</strong>
+            <strong>{t("footer:usefulLinks")}</strong>
             <li>
-              <a href="#solutions">Soluções</a>
+              <a href="#solutions">
+                {t("menu:solutions")}
+              </a>
             </li>
             <li>
-              <a href="#customers">Clientes</a>
+              <a href="#customers">
+                {t("menu:customers")}
+              </a>
             </li>
             <li>
-              <a href="#prices">Preços</a>
+              <a href="#prices">
+                {t("menu:prices")}
+              </a>
             </li>
             <li>
-              <a href="#contact">Contato</a>
+              <a href="#contact">
+                {t("menu:contact")}
+              </a>
             </li>
             <li>
-              <a href="#">Termos & Privacidade</a>
+              <a href="#">
+                {t("menu:termsAndPrivacy")}
+              </a>
             </li>
           </ul>
         </div>
         
         <div>
           <ul>
-            <strong>Contato</strong>
+            <strong>
+              {t("footer:contact")}
+            </strong>
             <li>+55 (99) 9999-9999</li>
             <li>
               <a href="#">contato@checkspeechai.com</a>

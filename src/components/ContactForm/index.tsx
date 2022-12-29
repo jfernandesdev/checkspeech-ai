@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next'
+
 import { Controller, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -6,7 +8,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import ReactFlagsSelect from 'react-flags-select'
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 
-import { Title } from "../Title";
+import { Title } from '../Title'
 
 import { Check } from 'phosphor-react'
 
@@ -27,6 +29,7 @@ const newContactFormSchema = yup.object({
 type NewContactFormInputs = yup.InferType<typeof newContactFormSchema>
 
 export function ContactForm() {
+  const { t } = useTranslation('contact')
   const methods = useForm<NewContactFormInputs>({
     resolver: yupResolver(newContactFormSchema),
   })
@@ -36,17 +39,17 @@ export function ContactForm() {
   function handleNewContact(data: NewContactFormInputs) {
     console.log(data);
 
-    // reset();
+    reset();
   }
 
   return (
     <section className={styles.container} id="contact">
       <form onSubmit={handleSubmit(handleNewContact)} className={styles.form}>
-        <Title>Fale conosco</Title>
+        <Title>{t("title")}</Title>
 
         <div>
           <label htmlFor="name">
-            <span>Nome:</span>
+            <span>{t("nameLabel")}:</span>
             <input
               type="text"
               id="name"
@@ -56,7 +59,7 @@ export function ContactForm() {
           </label>
 
           <label htmlFor="email">
-            <span>E-mail: </span>
+            <span>{t("emailLabel")}: </span>
             <input
               type="email"
               id="email"
@@ -68,7 +71,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="country">
-            <span>País: </span>
+            <span>{t("countryLabel")}: </span>
             <Controller
               control={control}
               name='country'
@@ -81,14 +84,14 @@ export function ContactForm() {
                   className={`${styles.selectCountry} ${errors.country && styles.inputErrorAlert}`}
                   searchable
                   placeholder="Selecione seu país"
-                  searchPlaceholder="Buscar país..."
+                  searchPlaceholder={t("searchPlaceholder").toString()}
                 />
               )}
             />
           </label>
 
           <label htmlFor="phone" className={styles.inputPhone}>
-            <span>Telefone: </span>
+            <span>{t("phoneLabel")}: </span>
             <Controller
               control={control}
               name='phone'
@@ -107,12 +110,12 @@ export function ContactForm() {
         </div>
 
         <label htmlFor="message">
-          <span>Mensagem:</span>
+          <span>{t("messageLabel")}:</span>
           <textarea
             id="message"
             {...register('message')}
             className={errors.message ? styles.inputErrorAlert : ''}
-            placeholder="Digite sua mensagem..."
+            placeholder={t("messagePlaceholder").toString()}
           />
         </label>
 
@@ -133,11 +136,11 @@ export function ContactForm() {
               </Checkbox.Root>
             )}
           />
-          Eu concordo com a <a>Política de Privacidade</a>
+          {t("labelCheckboxTerms")} <a>{t("privacyPolicy")}</a>
         </label>
 
         <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
+          {isSubmitting ? t("sending") : t("sendMessageButton")}
         </button>
       </form>
     </section>

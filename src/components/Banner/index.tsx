@@ -1,17 +1,24 @@
-import { Title } from "../Title";
-import { Text } from "../Text";
-import { Button } from "../Button";
+import { useTranslation } from 'next-i18next'
+
+import { Title } from '../Title'
+import { Text } from '../Text'
+import { Button } from '../Button'
 
 import styles from './styles.module.scss'
 
 export function Banner() {
+  const { t } = useTranslation('banner')
+  
   return (
     <div className={styles.container}>
       <div>
-        <Title>Experimente nossa solução</Title>
-        <Text>O CheckSpeech AI pode ser um parceiro estratégico para o seu negócio.</Text>
+        <Title>{t('title')}</Title>
+        <Text>{t('subtitle')}</Text>
       </div>
-      <Button title="Comece agora" url="#contact" />
+      <Button 
+        title={t('cta').toString()} 
+        url="#contact" 
+      />
     </div>
   )
 }

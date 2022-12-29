@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import { Check } from 'phosphor-react'
 
 import { formatPrice } from '../../utils/formatPrice'
@@ -20,6 +21,8 @@ interface CardPriceProps {
 }
 
 export function CardPrice({ plan, selectedPeriod = 'monthly' }: CardPriceProps) {
+  const { t } = useTranslation('prices')
+  
   return (
     <div className={`${styles.card} ${plan.cardIsActive && styles.active}`}>
       <h3 className={styles.title}> {plan.title} </h3>
@@ -33,9 +36,9 @@ export function CardPrice({ plan, selectedPeriod = 'monthly' }: CardPriceProps) 
 
               {item.timeInMinutes && (
                 <strong>
-                  {item.timeInMinutes} minutos {' '}
+                  {`${item.timeInMinutes} ${t("minutes")} `}
                   <small>
-                  ({item.extraMinutePrice ? `${formatPrice(item.extraMinutePrice)} / min excedente` : 'A combinar'})
+                    ({item.extraMinutePrice ? `${formatPrice(item.extraMinutePrice)} / ${t("surplusMinute")}` : t("toMatch")})
                   </small>
                 </strong>
               )}
@@ -46,13 +49,13 @@ export function CardPrice({ plan, selectedPeriod = 'monthly' }: CardPriceProps) 
 
       <span className={styles.price}>
         {selectedPeriod === 'monthly' ? 
-          plan.monthlyPrice ? <span>R$ {plan.monthlyPrice}<small> / mês</small></span> : 'A combinar' :
-          plan.yearlyPrice ? <span>R$ {plan.yearlyPrice}<small> / ano</small></span> : 'A combinar'
+          (plan.monthlyPrice ? <span>R$ {plan.monthlyPrice}<small> / {t("month")}</small></span> : t("toMatch")):
+          (plan.yearlyPrice ? <span>R$ {plan.yearlyPrice}<small> / {t("year")}</small></span> : t("toMatch"))
         }
       </span>
     
       <a href="#contact">
-        {plan.monthlyPrice ? 'Escolher Plano' : 'Consultar preço'}
+        {plan.monthlyPrice ? t("choosePlanButton") : t("buttonConsultPrice")}
       </a>
     </div>
   )

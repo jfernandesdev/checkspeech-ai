@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
@@ -29,4 +30,22 @@ export default function Home() {
       <Footer />
     </>
   )
+}
+
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "menu", 
+        "hero", 
+        "solutions",
+        "customers", 
+        "banner", 
+        "prices", 
+        "contact", 
+        "footer"
+      ])),
+    }
+  }
 }

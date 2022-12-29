@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Scrollspy from 'react-scrollspy'
+import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 
-import ReactFlagsSelect  from 'react-flags-select'
-
 import styles from './styles.module.scss'
-
-const optionsMenu = [
-  { name: 'Home', key: 'home'},
-  { name: 'Soluções', key: 'solutions' },
-  { name: 'Clientes', key: 'customers' },
-  { name: 'Preços', key: 'prices' },
-  { name: 'Contato', key: 'contact' },
-]
+import { SelectLanguage } from '../SelectLanguage'
 
 export function Navbar() {
+  const { t } = useTranslation('menu')
   const [navbarIsActive, setNavbarIsActive] = useState(false)
-  const [selected, setSelected] = useState('BR')
 
   useEffect(() => {
     const scrollListener = () => {
@@ -34,7 +26,13 @@ export function Navbar() {
     }
   }, [])
 
-  const onSelect = (code:string): void => setSelected(code)
+  const optionsMenu = [
+    { name: t("home"), slug: 'home' },
+    { name: t("solutions"), slug: 'solutions' },
+    { name: t("customers"), slug: 'customers' },
+    { name: t("prices"), slug: 'prices' },
+    { name: t("contact"), slug: 'contact' },
+  ]
 
   return (
     <header className={`${styles.headerContainer} ${navbarIsActive && styles.active}`}>
@@ -45,35 +43,24 @@ export function Navbar() {
             alt="CheckSpeech AI" 
             width={182} 
             height={23} 
+            priority
           />
         </a>
 
-        <Scrollspy 
-          items={optionsMenu.map(item => item.key)} 
+        <Scrollspy
+          items={['home', 'solutions', 'customers', 'prices', 'contact']}
           offset={-100}
-          currentClassName={styles.active} 
+          currentClassName={styles.active}
           className={styles.nav}
         >
-            {optionsMenu.map(item => (
-              <li key={item.key}>
-                <a  href={"#" + item.key} >
-                  {item.name}
-                </a>
-              </li>
-            ))} 
-
-          <ReactFlagsSelect
-            selected={selected}
-            onSelect={onSelect}
-            placeholder="Idioma"
-            countries={["BR", "US", "ES"]}
-            customLabels={{
-              BR: { primary: "PT-BR" },
-              US: { primary: "US", },
-              ES: { primary: "ES", },
-            }}
-            className={styles.languageSelection}
-          />
+          {optionsMenu.map((item) => (
+            <li key={item.slug}>
+              <a href={`#${item.slug}`}>
+                {item.name}
+              </a>
+            </li>
+          ))} 
+          <SelectLanguage />
         </Scrollspy>
       </div>
     </header>

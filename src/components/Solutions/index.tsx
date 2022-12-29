@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next'
+
 import { Title } from '../Title'
 import { Text } from '../Text'
 import { Button } from '../Button'
@@ -6,14 +8,18 @@ import { Accordion } from '../Accordion'
 import styles from './styles.module.scss'
 
 export function Solutions() {
+  const { t } = useTranslation('solutions')
+  
   return(
     <section className={styles.container} id="solutions">
       <div>
-        <Title>Nossas Soluções</Title>
-        <Text>
-          Nossa IA é treinada em mais de 500.000 horas de áudios,<br /> transcritos por humanos de uma ampla variedade de idades, <br />nacionalidades, sotaques e níveis de instruções. A API é <br />comercializada no modelo SAAS (software as a service).
+        <Title>{t("title")}</Title>
+        <Text> {t("text")}
         </Text>
-        <Button title="Comece agora" url="#contact" />
+        <Button 
+          title={t("cta")}
+          url="#contact"
+        />
       </div>
       
       <Accordion />

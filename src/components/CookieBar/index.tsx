@@ -1,5 +1,7 @@
-import { Cookie, X } from 'phosphor-react'
+import { useTranslation } from 'next-i18next'
 import { setCookie } from 'nookies'
+import { Cookie, X } from 'phosphor-react'
+
 import styles from './styles.module.scss'
 
 interface CookieBarProps {
@@ -7,6 +9,8 @@ interface CookieBarProps {
 }
 
 export function CookieBar({ onClose }: CookieBarProps) {
+  const { t } = useTranslation('hero')
+  
   function handleAcceptCookie() {
     setCookie(null, 'checkspeechAcceptCookies', 'true', {
       maxAge: 86400 * 400, //400 days
@@ -20,7 +24,7 @@ export function CookieBar({ onClose }: CookieBarProps) {
       <div>
         <Cookie size={32} />
         <span>
-          Este website utiliza cookies para oferecer uma melhor experiência de navegação. Ao navegar pelo site, você concorda com o uso de cookies. Para mais informações, consulte a nossa <a href="#">Política de Privacidade</a>.
+          {t("cookieConsentText")} <a href="#">{t("privacyPolicy")}</a>.
         </span>
 
         <div className={styles.actionButtons}>
@@ -28,12 +32,12 @@ export function CookieBar({ onClose }: CookieBarProps) {
             className={styles.acceptCookieButton}
             onClick={handleAcceptCookie}
             >
-            Continuar navegando
+            {t("continueBrowsing")}
           </button>
 
           <button
             className={styles.closeButton}
-            title="Fechar aviso"
+            title={t("closeButton").toString()}
             onClick={onClose}
           >
             <X size={25} />
