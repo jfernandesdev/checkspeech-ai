@@ -136,7 +136,7 @@ export function ContactForm() {
               </Checkbox.Root>
             )}
           />
-          {t("labelCheckboxTerms")} <a>{t("privacyPolicy")}</a>
+          <p>{t("labelCheckboxTerms")} <a href="#">{t("privacyPolicy")}</a></p>
         </label>
 
         <button type="submit" disabled={isSubmitting}>

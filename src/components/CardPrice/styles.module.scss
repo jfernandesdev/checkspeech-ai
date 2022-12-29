@@ -11,6 +11,10 @@
   border: 2px solid rgba(255, 253, 253, 0.5);
   border-radius: 24px;
 
+  @media(max-width: 769px) {
+    padding: 2rem 1.5rem;
+  }
+
   &.active {
     border: 0;
     background: linear-gradient(144.39deg, #FFFFFF -278.56%, #6D6D6D -78.47%, #11101D 91.61%);

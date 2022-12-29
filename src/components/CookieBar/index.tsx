@@ -20,11 +20,11 @@ export function CookieBar({ onClose }: CookieBarProps) {
   }
 
   return (
-    <div className = { styles.container } >
+    <div className = { styles.container }>
       <div>
         <Cookie size={32} />
         <span>
-          {t("cookieConsentText")} <a href="#">{t("privacyPolicy")}</a>.
+          {t("cookieConsentText")} <a href="#">{t("privacyPolicy")}</a>
         </span>
 
         <div className={styles.actionButtons}>
@@ -44,6 +44,6 @@ export function CookieBar({ onClose }: CookieBarProps) {
           </button>
         </div>
       </div>
-  </div > 
+    </div> 
   )
 }

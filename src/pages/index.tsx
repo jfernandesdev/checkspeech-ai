@@ -16,7 +16,7 @@ export default function Home() {
       <Head>
         <title>CheckSpeech AI</title>
       </Head>
-
+      
       <main>
         <Navbar />
         <Hero />
@@ -26,7 +26,6 @@ export default function Home() {
         <Prices />
         <ContactForm />
       </main>
-
       <Footer />
     </>
   )

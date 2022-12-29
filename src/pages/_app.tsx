@@ -3,7 +3,7 @@ import { appWithTranslation } from 'next-i18next'
 
 import '../styles/global.scss'
 
-function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />
 }
 

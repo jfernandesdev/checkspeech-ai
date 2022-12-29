@@ -1,6 +1,10 @@
 .container {
   text-align: center;
   padding: 5.5rem 0;
+
+  @media(max-width: 769px) {
+    padding: 2.5rem 0;
+  }
 }
 
 .customerList {
@@ -16,5 +20,28 @@
     &:hover {
       filter: invert(20%) sepia(13%) saturate(1155%) hue-rotate(180deg) brightness(93%) contrast(87%);
     }
+  }
+
+  @media(max-width: 769px) {
+    display: flex;
+    margin-top: 2rem;
+    gap: 1rem;
+    left: 2rem;
+    top: 0%;
+    animation: slide-auto-scroll 30s linear infinite;
+
+    img {
+      width: 200px;
+    }
+  }
+}
+
+@keyframes slide-auto-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-1400px, 0, 0);
   }
 }

@@ -1,11 +1,27 @@
 .container {
   padding: 5.5rem 0;
+
+  @media(max-width: 769px) {
+    padding: 3.5rem 0;
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  > p {
+    max-width: 40%;
+  }
+
+  @media(max-width: 769px) {
+    display: block;
+
+    > p {
+      max-width: 100%;
+    }
+  }
 }
 
 .togglePeriodPlans {
@@ -51,7 +67,11 @@
       }
     }
   }
-}
+
+  @media(max-width: 769px) {
+    width: 100%;  
+  }
+} 
 
 .planCards {
   display: flex;
@@ -59,4 +79,9 @@
   align-items: flex-start;
   margin-top: 4rem;
   gap: 4rem;
+
+  @media(max-width: 769px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }

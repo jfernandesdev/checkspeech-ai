@@ -47,6 +47,10 @@ body {
   background-size: cover;
   color: var(--gray-200);
   -webkit-font-smoothing: antialiased;
+
+  @media(max-width: 769px) {
+    background-position: top right;
+  }
 }
 
 body, input, textarea, select, button {
@@ -70,4 +74,11 @@ main {
   max-width: 1440px;
   padding: 0 2rem;
   margin: auto;
+  overflow: hidden;
+}
+
+@media(max-width: 768px) {
+  html {
+    font-size: 87.5%;
+  }
 }

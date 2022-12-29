@@ -6,13 +6,20 @@ import Image from 'next/image'
 import styles from './styles.module.scss'
 import { SelectLanguage } from '../SelectLanguage'
 
-export function Navbar() {
-  const { t } = useTranslation('menu')
+export function Navbar () {
+  const [mounted, setMounted] = useState(false);
   const [navbarIsActive, setNavbarIsActive] = useState(false)
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  
+  const { t } = useTranslation('menu')
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const scrollListener = () => {
-      if(window.scrollY > 15) {
+      if (window.scrollY > 15) {
         setNavbarIsActive(true);
       } else {
         setNavbarIsActive(false)
@@ -26,6 +33,10 @@ export function Navbar() {
     }
   }, [])
 
+  const toggleMenu = () => {
+    setMenuIsOpen(!menuIsOpen)
+  }
+
   const optionsMenu = [
     { name: t("home"), slug: 'home' },
     { name: t("solutions"), slug: 'solutions' },
@@ -37,7 +48,7 @@ export function Navbar() {
   return (
     <header className={`${styles.headerContainer} ${navbarIsActive && styles.active}`}>
       <div className={styles.headerContent}>
-        <a href="#home">
+        <a href="#home" className={styles.logo}>
           <Image 
             src="/logo-checkspeech.svg" 
             alt="CheckSpeech AI" 
@@ -47,21 +58,35 @@ export function Navbar() {
           />
         </a>
 
-        <Scrollspy
-          items={['home', 'solutions', 'customers', 'prices', 'contact']}
-          offset={-100}
-          currentClassName={styles.active}
-          className={styles.nav}
-        >
-          {optionsMenu.map((item) => (
-            <li key={item.slug}>
-              <a href={`#${item.slug}`}>
-                {item.name}
-              </a>
-            </li>
-          ))} 
+        <div className={styles.nav}>
+          {mounted && (
+            <Scrollspy
+              items={optionsMenu.map(item => item.slug)}
+              offset={-100}
+              currentClassName={styles.active}
+              className={`${menuIsOpen && styles.openMenu}`}
+            >
+              {optionsMenu.map((item) => (
+                <li key={item.slug}>
+                  <a href={`#${item.slug}`} onClick={() => setMenuIsOpen(false)}>
+                    {item.name}
+                  </a>
+                </li>
+              ))} 
+            </Scrollspy>
+          )}
+
           <SelectLanguage />
-        </Scrollspy>
+
+          <button
+            className={`${styles.navbarToggler} ${menuIsOpen && styles.active}`}
+            onClick={toggleMenu}
+          >
+            {Array.from({ length: 5 }).map((_, index) => (
+              <span key={index} />
+            ))}
+          </button>
+        </div>
       </div>
     </header>
   )

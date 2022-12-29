@@ -5,4 +5,9 @@
   gap: 4.5rem;
   min-height: 100vh;
   padding: 5.5rem 0;
+
+  @media(max-width: 769px) {
+    display: block;
+    padding: 4.5rem 0;
+  }
 }

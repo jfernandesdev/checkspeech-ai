@@ -14,12 +14,8 @@ export function Solutions() {
     <section className={styles.container} id="solutions">
       <div>
         <Title>{t("title")}</Title>
-        <Text> {t("text")}
-        </Text>
-        <Button 
-          title={t("cta")}
-          url="#contact"
-        />
+        <Text>{t("text")}</Text>
+        <Button title={t("cta")} url="#contact"/>
       </div>
       
       <Accordion />

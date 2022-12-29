@@ -27,6 +27,17 @@
     flex-direction: column;
     gap: 1rem;
   }
+
+    @media(max-width: 769px) {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      gap: 2rem;
+
+      > div {
+        align-items: center;
+      }
+    }
   
   ul {
     list-style-type: none;
@@ -53,7 +64,13 @@
   margin: auto;
   font-size: 0.75rem;
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);  
+  border-top: 1px solid rgba(255, 255, 255, 0.1); 
+  
+  @media(max-width: 769px) {
+    flex-direction: column;
+    padding: 1rem 2rem;
+    text-align: center;
+  }
 }
 
 .socialMedia {

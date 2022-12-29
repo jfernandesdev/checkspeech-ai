@@ -31,12 +31,33 @@
       color: var(--white);
     }
   }
+
+  @media(max-width: 769px) {
+    > div {
+     display: block;
+      
+    > svg {
+        width: 1.1rem;
+        height: 1.1rem;
+        margin: 0 0.5rem -0.1rem;
+    }
+    }
+
+    span {
+      max-width: 100%;
+    }
+  }
 }
 
 .actionButtons {
   display: flex;
   gap: 0.5rem;
   margin-left: auto;
+
+  @media(max-width: 769px) {
+    justify-content: center;
+    margin-top: 1rem;
+  }
 }
 
 .acceptCookieButton {
