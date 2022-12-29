@@ -80,6 +80,7 @@ export function ContactForm() {
                 <ReactFlagsSelect
                   selected={value}
                   onSelect={onChange}
+                  rfsKey="select-the-country"
                   customLabels={{ BR: "Brasil" }}
                   className={`${styles.selectCountry} ${errors.country && styles.inputErrorAlert}`}
                   searchable
@@ -128,6 +129,7 @@ export function ContactForm() {
               <Checkbox.Root
                 checked={value}
                 onCheckedChange={onChange}
+                aria-label="Terms"
                 className={`${styles.checkbox} ${errors.terms && styles.inputErrorAlert}`}
               >
                 <Checkbox.Indicator>
@@ -139,7 +141,11 @@ export function ContactForm() {
           <p>{t("labelCheckboxTerms")} <a href="#">{t("privacyPolicy")}</a></p>
         </label>
 
-        <button type="submit" disabled={isSubmitting}>
+        <button 
+          type="submit" 
+          disabled={isSubmitting} 
+          aria-label={t("sendMessageButton")}
+        >
           {isSubmitting ? t("sending") : t("sendMessageButton")}
         </button>
       </form>

@@ -15,6 +15,13 @@ export default function Home() {
     <>
       <Head>
         <title>CheckSpeech AI</title>
+        <meta name='description' content='CheckSpeech AI é um conjunto de APIs de conversão de fala em textos, bem como a interpretação do sentimento dominante nos dizeres.' />
+        <meta property='og:title' content='CheckSpeech AI' />
+        <meta
+          property='og:description'
+          content='CheckSpeech AI é um conjunto de APIs de conversão de fala em textos, bem como a interpretação do sentimento dominante nos dizeres.'
+        />
+        <meta property='og:type' content='website' />
       </Head>
       
       <main>
@@ -26,6 +33,7 @@ export default function Home() {
         <Prices />
         <ContactForm />
       </main>
+
       <Footer />
     </>
   )

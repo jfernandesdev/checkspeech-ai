@@ -58,7 +58,11 @@ export function Footer() {
 
         <div>
           <ul>
-            <strong>{t("footer:usefulLinks")}</strong>
+            <li>
+              <strong>
+                {t("footer:usefulLinks")}
+              </strong>
+            </li>
             <li>
               <a href="#solutions">
                 {t("menu:solutions")}
@@ -89,9 +93,7 @@ export function Footer() {
         
         <div>
           <ul>
-            <strong>
-              {t("footer:contact")}
-            </strong>
+            <li> <strong> {t("footer:contact")}</strong></li>
             <li>+55 (99) 9999-9999</li>
             <li>
               <a href="#">contato@checkspeechai.com</a>

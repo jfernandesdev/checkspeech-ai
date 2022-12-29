@@ -71,6 +71,7 @@ export function Prices() {
               id="monthly"
               onClick={() => handleTogglePeriodPlans('monthly')}
               className={periodPlans === 'monthly' ? styles.active : ''}
+              aria-label={t("monthly")}
             >
             {t("monthly")}
             </button>
@@ -78,6 +79,7 @@ export function Prices() {
               id="yearly"
               onClick={() => handleTogglePeriodPlans('yearly')}
               className={periodPlans === 'yearly' ? styles.active : ''}
+              aria-label={t("yearly")}
               >
             {t("yearly")}
             </button>

@@ -43,7 +43,7 @@ html, body {
 }
 
 body {
-  background: url('/background.png') no-repeat top left var(--background);
+  background: url('/background.webp') no-repeat top left var(--background);
   background-size: cover;
   color: var(--gray-200);
   -webkit-font-smoothing: antialiased;
@@ -54,7 +54,7 @@ body {
 }
 
 body, input, textarea, select, button {
-  font: 400 1rem "Poppins", sans-serif;
+  font: 400 1rem var(--poppins-font), sans-serif;
 }
 
 h1, h2, h3 {

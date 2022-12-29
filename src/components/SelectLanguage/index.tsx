@@ -35,6 +35,7 @@ export function SelectLanguage() {
     <ReactFlagsSelect
       selected={selected}
       onSelect={handleLanguageChange}
+      rfsKey="select-the-language"
       placeholder="Idioma"
       countries={["BR", "US", "ES"]}
       customLabels={{

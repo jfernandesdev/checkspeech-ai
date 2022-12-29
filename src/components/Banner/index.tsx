@@ -16,7 +16,7 @@ export function Banner() {
         <Text>{t('subtitle')}</Text>
       </div>
       <Button 
-        title={t('cta').toString()} 
+        title={t('cta').toString()}
         url="#contact" 
       />
     </div>

@@ -31,6 +31,7 @@ export function CookieBar({ onClose }: CookieBarProps) {
           <button 
             className={styles.acceptCookieButton}
             onClick={handleAcceptCookie}
+            aria-label={t("continueBrowsing")}
             >
             {t("continueBrowsing")}
           </button>
@@ -38,6 +39,7 @@ export function CookieBar({ onClose }: CookieBarProps) {
           <button
             className={styles.closeButton}
             title={t("closeButton").toString()}
+            aria-label={t("closeButton").toString()}
             onClick={onClose}
           >
             <X size={25} />

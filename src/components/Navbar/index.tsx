@@ -81,6 +81,8 @@ export function Navbar () {
           <button
             className={`${styles.navbarToggler} ${menuIsOpen && styles.active}`}
             onClick={toggleMenu}
+            aria-label="Menu"
+            aria-pressed="true"
           >
             {Array.from({ length: 5 }).map((_, index) => (
               <span key={index} />
