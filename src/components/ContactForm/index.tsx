@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
 import { Controller, useForm } from 'react-hook-form'
@@ -8,12 +9,16 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import ReactFlagsSelect from 'react-flags-select'
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 
+import emailjs from '@emailjs/browser';
+
 import { Title } from '../Title'
 
 import { Check } from 'phosphor-react'
 
+import { ToastContainer, toast } from 'react-toastify'
 import styles from './styles.module.scss'
 import 'react-phone-number-input/style.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 const newContactFormSchema = yup.object({
   name: yup.string().required(),
@@ -30,21 +35,50 @@ type NewContactFormInputs = yup.InferType<typeof newContactFormSchema>
 
 export function ContactForm() {
   const { t } = useTranslation('contact')
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const methods = useForm<NewContactFormInputs>({
     resolver: yupResolver(newContactFormSchema),
   })
 
-  const { register, handleSubmit, control, reset, formState: { errors, isSubmitting }} = methods;
+  const { register, handleSubmit, control, reset, formState: { errors }} = methods;
  
-  function handleNewContact(data: NewContactFormInputs) {
-    console.log(data);
+  function handleNewContact(formData: NewContactFormInputs) {
+    setIsSubmitting(true)
 
-    reset();
+    var successMessage = t("successMessage")
+    var errorMessage = t("errorMessage")
+
+    emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      formData,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    ).then((result) => {
+      console.log(result.text);
+
+      toast.success(successMessage, {
+        position: "bottom-right",
+        theme: 'dark'
+      });
+    }, (error) => {
+      console.log(error.text);
+
+      toast.error(errorMessage, {
+        position: "bottom-right",
+        theme: 'dark'
+      });
+    })
+
+    setIsSubmitting(false)
+    reset()
   }
 
   return (
     <section className={styles.container} id="contact">
-      <form onSubmit={handleSubmit(handleNewContact)} className={styles.form}>
+      <ToastContainer />
+
+      <form onSubmit={handleSubmit(handleNewContact)} className={styles.form} autoComplete="off">
         <Title>{t("title")}</Title>
 
         <div>

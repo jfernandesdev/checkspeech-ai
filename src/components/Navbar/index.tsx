@@ -7,12 +7,11 @@ import styles from './styles.module.scss'
 import { SelectLanguage } from '../SelectLanguage'
 
 export function Navbar () {
+  const { t } = useTranslation('menu')
   const [mounted, setMounted] = useState(false);
   const [navbarIsActive, setNavbarIsActive] = useState(false)
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   
-  const { t } = useTranslation('menu')
-
   useEffect(() => {
     setMounted(true)
   }, [])

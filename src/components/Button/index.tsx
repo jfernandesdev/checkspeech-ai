@@ -8,10 +8,8 @@ interface ButtonProps {
 
 export function Button({ title, url }: ButtonProps) {
   return (
-    <Link href={url} passHref>
-      <button className={styles.button} aria-label={title}>
-        {title}
-      </button>
-    </Link>
+    <a href={url} role="button" className={styles.button} aria-label={title}>
+      {title}
+    </a>
   )
 }

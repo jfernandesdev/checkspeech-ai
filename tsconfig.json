@@ -20,6 +20,6 @@
     "**/*.ts", 
     "**/*.tsx",
     "next-i18next.config.js" 
-  ],
+, "src/lib/languageDetector.js", "src/lib/redirect.js", "src/lib/getStatic.js"  ],
   "exclude": ["node_modules"]
 }

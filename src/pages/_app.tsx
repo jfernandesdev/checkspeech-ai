@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app'
+import NextNProgress from 'nextjs-progressbar'
 import { appWithTranslation } from 'next-i18next'
 import { Poppins } from '@next/font/google'
 
@@ -22,7 +23,8 @@ const App = ({ Component, pageProps }: AppProps) => {
         }
       `}</style>
 
-    <Component {...pageProps} />
+      <NextNProgress color="#FF1CF7" options={{ showSpinner: false }} />
+      <Component {...pageProps} />
     </>
   )
 }

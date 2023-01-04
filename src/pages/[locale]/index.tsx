@@ -1,16 +1,16 @@
 import Head from 'next/head'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getStaticPaths, makeStaticProps } from '../../lib/getStatic' 
 
-import { Navbar } from '../components/Navbar'
-import { Hero } from '../components/Hero'
-import { Solutions } from '../components/Solutions'
-import { Customers } from '../components/Customers'
-import { Banner } from '../components/Banner'
-import { Prices } from '../components/Prices'
-import { ContactForm } from '../components/ContactForm'
-import { Footer } from '../components/Footer'
+import { Navbar } from '../../components/Navbar'
+import { Hero } from '../../components/Hero'
+import { Solutions } from '../../components/Solutions'
+import { Customers } from '../../components/Customers'
+import { Banner } from '../../components/Banner'
+import { Prices } from '../../components/Prices'
+import { ContactForm } from '../../components/ContactForm'
+import { Footer } from '../../components/Footer'
 
-export default function Home() {
+const Homepage = () => {
   return (
     <>
       <Head>
@@ -39,20 +39,7 @@ export default function Home() {
   )
 }
 
-export async function getStaticProps({ locale }: any) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        "common",
-        "menu", 
-        "hero", 
-        "solutions",
-        "customers", 
-        "banner", 
-        "prices", 
-        "contact", 
-        "footer"
-      ])),
-    }
-  }
-}
+export default Homepage
+
+const getStaticProps = makeStaticProps(['common', 'menu', 'hero', 'solutions', 'customers', 'banner', 'prices', 'contact', 'footer'])
+export { getStaticPaths, getStaticProps }

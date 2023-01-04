@@ -104,7 +104,7 @@ export function Footer() {
       </div>
       <div className={styles.copy}>
         <span>
-          Copyright &copy; 2022 CheckSpeech AI. All Rights Reserved.
+          Copyright &copy; 2023 CheckSpeech AI. All Rights Reserved.
         </span>
 
         <span>

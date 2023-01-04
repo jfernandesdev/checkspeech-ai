@@ -1,35 +1,29 @@
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import ReactFlagsSelect from 'react-flags-select'
 
 import styles from './styles.module.scss'
 
 const langTypes = {
-  BR: 'pt-br',
-  US: 'en-us',
+  BR: 'pt-BR',
+  US: 'en-US',
   ES: 'es'
+}
+
+function findKey(value: string) {
+  for (let key in langTypes)
+    if (langTypes[key] === value) return key;
 }
 
 export function SelectLanguage() {
   const router = useRouter()
-  const { pathname, asPath, query } = router
-  const [selected, setSelected] = useState('BR')
+  const [selected, setSelected] = useState(findKey(router.query.locale.toString()))
 
   function handleLanguageChange(code: string) {
-    router.push({ pathname, query }, asPath, { locale: [langTypes[code]].toString() })
+    const anchorTag = window.location.hash && `/${window.location.hash}`;
+    router.push(`/${langTypes[code]}${anchorTag}`)
     setSelected(code)
   }
-
-  function findKey(value: string) {
-    for (let key in langTypes)
-      if (langTypes[key] === value) return key;
-    return 'BR';
-  }
-
-  useEffect(() => {
-    var localeValue = router.locale.toLocaleLowerCase();
-    setSelected(findKey(localeValue))
-  }, [router])
 
   return (
     <ReactFlagsSelect
